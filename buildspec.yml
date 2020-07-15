@@ -9,6 +9,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo "$CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - printenv
       - cd infra
       - terraform init -no-color
       - CI_BUILD=true ENV=main make plan
