@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - terraform --version
+      - aws --version
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo "$IMAGE_TAG"
+      - cd infra
+      - terraform init
+      - ENV=main make plan
+  post_build:
+    commands:
+      - echo Build completed on `date`
