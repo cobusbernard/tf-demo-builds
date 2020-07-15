@@ -12,7 +12,7 @@ phases:
       - printenv
       - cd infra
       - terraform init -no-color
-      - ENV=main make plan
+      -  ENV=main make plan
   post_build:
     commands:
       - echo Build completed on `date`
