@@ -24,6 +24,10 @@ else
 		TERRAFORM_REQUIRED_MD5:= 0fec1e3dfe73065ff67aeb47f5cdd400
 endif
 
+ifdef CI_BUILD
+		COLOUR_BUILD_FLAG:= "-no-color"
+endif
+
 default:
 	@echo "Creates a Terraform system from a template."
 	@echo "The following commands are available:"
@@ -45,7 +49,7 @@ plan: check
 	@echo 'Switching to the [$(value ENV)] environment ...'
 	@terraform workspace select $(value ENV)
 
-	@terraform plan  \
+	@terraform plan $(value COLOUR_BUILD_FLAG) \
   	  -var-file="env_vars/$(value ENV).tfvars" \
 		-out $(value ENV).plan
 

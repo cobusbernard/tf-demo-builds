@@ -11,7 +11,7 @@ phases:
       - echo "$IMAGE_TAG"
       - cd infra
       - terraform init
-      - ENV=main make plan
+      - CI_BUILD=true ENV=main make plan
   post_build:
     commands:
       - echo Build completed on `date`
