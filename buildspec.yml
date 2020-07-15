@@ -10,7 +10,7 @@ phases:
       - echo Build started on `date`
       - echo "$CODEBUILD_RESOLVED_SOURCE_VERSION"
       - cd infra
-      - terraform init
+      - terraform init -no-color
       - CI_BUILD=true ENV=main make plan
   post_build:
     commands:
